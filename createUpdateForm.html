@@ -1,0 +1,211 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Create or Update a User</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/createUpdateForm.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    </head>
+    <body>
+        <form id="form">
+            <section id="description">
+                <section id="part1">
+                    <section id="basic_info">
+                        <h2>Basic Info</h2>
+                        <input type="text" name="first_name" placeholder="First Name"><br><br>
+                        <input type="text" name="last_name" placeholder="Last Name"><br><br>
+                        <input type="text" name="degree" placeholder="Degree"><br><br>
+                    </section>
+
+                    <section id="contact_info">
+                        <h2>Contact Info</h2>
+                        <input type="text" name="phone" placeholder="Phone"><br><br>
+                        <input type="text" name="address" placeholder="Address"><br><br>
+                        <input type="text" name="email" placeholder="Email"><br><br>
+                    </section>
+
+                    <section id="about_me">
+                        <h2>About me</h2>
+                        <textarea name="about_me" rows="4" cols="25" placeholder="Little describe about you"></textarea><br>
+                    </section>
+                </section>
+
+                <section id="part2">
+                    <h2>Social Networks</h2>
+                    <section id="social_networks">
+                    </section>
+                </section>
+
+                <section id="part3">
+                    <h2>Experience</h2>
+                    <section id="selection">
+                        <h3>How many jobs you have worked? (at least 1)</h3>
+                        <select id="exp_num" name="exp_num" onchange="experience_change()">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </section>
+                    <section id="experience_data">
+                    </section>
+                </section>
+
+                <section id="part4">
+                    <section id="skills">
+
+                    </section>
+                </section>
+
+                <section id="part5">
+                    <h2>Education</h2>
+                    <section id="selection">
+                        <h3>How many educational institutions you have been? (at least 1)</h3>
+                        <select id="edu_num" name="edu_num" onchange="education_change()">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </section>
+                    <section id="edu_data">
+                    </section>
+                </section>
+
+                <section id="part6">
+                    <section id="lists">
+                        <section id="hobbies">
+
+                        </section>
+                        <section id="languages">
+
+                        </section>
+                    </section>
+                </section>
+                <div id="responseDiv">
+
+                </div>
+                <input id="submit" type="submit" value="Create/Update your CV">
+            </section><!-- /cv -->
+        </form>
+        <button class="back-button" name="back_button" onclick="location.href = 'http://localhost/CVFinalAmirAndJake/userScreen.html';">
+            Back to  User Screen
+        </button>
+
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/createUpdateForm.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+
+            function experience_change(){
+                var num = $("#exp_num").val();
+                var html = "";
+                for (var i = 0; i < num; i++) {
+                    html += "<section id='experience'>";
+                    html += "<section>";
+                    html += "<input type='text' name='exp_title_" + i + "' placeholder='Title'><br><br>";
+                    html += "<input type='text' name='exp_start_" + i + "' class='datepicker' placeholder='start date'><br><br>";
+                    html += "<input type='text' name='exp_end_" + i + "' class='datepicker' placeholder='end date'><br><br>";
+                    html += "</section>";
+                    html += "<section>";
+                    html += "<input type='text' name='exp_company_" + i + "' placeholder='Company name'><br><br>";
+                    html += "<textarea rows='4' cols='35' name='exp_description_" + i + "' placeholder='Description'></textarea><br><br>";
+                    html += "</section>";
+                    html += "</section>";
+                }
+                $('#experience_data').html(html);
+                $( ".datepicker" ).datepicker({
+                    dateFormat: "yy-mm-dd"
+                });
+            };
+
+            function education_change(){
+                var num = $("#edu_num").val();
+                var html = "";
+                for (var i = 0; i < num; i++) {
+                    html += "<section id='edu'>";
+                    html += "<section>";
+                    html += "<input type='text' name='edu_title_" + i + "' placeholder='Title'><br><br>";
+                    html += "<input type='text' name='edu_start_" + i + "' class='datepicker' placeholder='start date'><br><br>";
+                    html += "<input type='text' name='edu_end_" + i + "' class='datepicker' placeholder='end date'><br><br>";
+                    html += "</section>";
+                    html += "<section>";
+                    html += "<input type='text' name='edu_place_" + i + "' placeholder='Place'><br><br>";
+                    html += "<textarea rows='4' cols='35' name='edu_description_" + i + "' placeholder='Description'></textarea><br><br>";
+                    html += "</section>";
+                    html += "</section>";
+                }
+                $('#edu_data').html(html);
+
+                $( ".datepicker" ).datepicker({
+                    dateFormat: "yy-mm-dd"
+                });
+            };
+            $("#form").submit(function(event) {
+                event.preventDefault();
+                var $form = $(this);
+                var $inputs = $form.find("input, select, button, textarea");
+                var serializedData = $form.serialize();
+
+                $inputs.prop("disabled", true);
+                var user_id = window.location.hash.substr(1);
+                request = $.ajax({
+                    url: "http://localhost/CVFinalAmirAndJake/php/createUpdateUser.php?edit_id=" + user_id,
+                    type: "post",
+                    data: serializedData
+                });
+
+                request.done(function (response, textStatus, jqXHR){
+                    // Log a message to the console
+                    if(response){
+                        $("#responseDiv").html(response);
+                    } else {
+                        window.location.href = "http://localhost/CVFinalAmirAndJake/userScreen.html";
+                    }
+                });
+                // Callback handler that will be called on failure
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    // Log the error to the console
+                    console.error(
+                        "The following error occurred: "+
+                        textStatus, errorThrown
+                    );
+                });
+                // Callback handler that will be called regardless
+                // if the request failed or succeeded
+                request.always(function () {
+                    // Reenable the inputs
+                    $inputs.prop("disabled", false);
+                });
+
+            });
+        </script>
+    </body>
+</html>

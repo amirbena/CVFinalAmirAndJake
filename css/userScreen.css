@@ -1,0 +1,51 @@
+body {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background:  wheat;
+    color: DarkRed;
+    box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.75);
+}
+header h1{
+    padding-left: 35%;
+    padding-top: 100px;
+    font-size: 300%;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+.main {
+    display: flex;
+}
+.aside-style {
+    justify-content: center;
+    margin: 1%;
+}
+#add-user{
+    margin-left: 50%;
+    margin-top: 50%;
+    min-width: 80px;
+    min-height: 80px;
+    background: 	#FFD700;
+    font-weight: 600;
+}
+
+#content {
+    background: OldLace;
+    padding-bottom: 20px;
+}
+#screen {
+    margin-left: 10%;
+}
+#line {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #808000;
+}
+#line td{
+    padding: 20px;
+    border-left-color: #C0C5CD;
+    border-left-style: solid;
+    border-left-width: 1px;
+}
